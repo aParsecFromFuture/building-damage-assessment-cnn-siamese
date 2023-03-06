@@ -58,21 +58,9 @@ export PYTHONPATH="${PYTHONPATH}:/path/to/ai4eutils"
 
 We generate pixel masks based on the xBD dataset labels provided as polygons in geoJSON files since the tier3 disasters did not come with masks and the masks for the other disasters had a border value that was likely 0, which would not help to separate the buildings. To do that, we modified the xView baseline repo's [script](https://github.com/DIUx-xView/xView2_baseline/blob/master/utils/mask_polygons.py) for [create_label_masks.py](./data/inspect_masks.ipynb) to generate the masks for entire dataset. Commands that we ran:
 ```
-python data/create_label_masks.py ./nlrc-damage-assessment/public_datasets/xBD/raw/hold -b 1
+python data/create_label_masks.py ./building-damage-assessment/xBD/ -b 1
 
-python data/create_label_masks.py ./nlrc-damage-assessment/public_datasets/xBD/raw/test -b 1
-
-python data/create_label_masks.py ./nlrc-damage-assessment/public_datasets/xBD/raw/train -b 1
-
-python data/create_label_masks.py ./nlrc-damage-assessment/public_datasets/xBD/raw_tier3 -b 1
-
-python data/create_label_masks.py ./nlrc-damage-assessment/public_datasets/xBD/raw/hold -b 2
-
-python data/create_label_masks.py ./nlrc-damage-assessment/public_datasets/xBD/raw/test -b 2
-
-python data/create_label_masks.py ./nlrc-damage-assessment/public_datasets/xBD/raw/train -b 2
-
-python data/create_label_masks.py ./nlrc-damage-assessment/public_datasets/xBD/raw_tier3 -b 2
+python data/create_label_masks.py ./building-damage-assessment/xBD/ -b 2
 
 ```
 Masks for border widths of 1 and 2 were created in case we would like to experiment with both cases. We used a border of 2 but you can see their effects in the notebook [inspect_masks.ipynb](./data/inspect_masks.ipynb) and choose either case that you would prefer.
@@ -172,7 +160,7 @@ tensorboard --host 0.0.0.0 --logdir ./outputs/experiment_name/logs/ --port 8009
 The trained model can be used for inference via the following command. The best trained model file is presented under [models](./models/model_best.pth.tar) directory. Please review the paramters needed in [inference/inference.py](./inference/inference.py) before running the code.
 
 ```
-python inference/inference.py --output_dir outputs/ --data_img_dir xBD_sliced_augmented_20_alldisasters/ --data_inference_dict constants/splits/all_disaster_splits_sliced_img_augmented_20.json --data_mean_stddev constants/splits/all_disaster_mean_stddev_tiles_0_1.json --label_map_json constants/class_lists/xBD_label_map.json --model models/model_best.pth.tar
+python inference/inference.py --output_dir outputs/ --data_img_dir final_mdl_all_disaster_splits/ --data_inference_dict building-damage-assessment/constants/splits/splits_sliced_img_augmented_20.json --data_mean_stddev building-damage-assessment/constants/splits/mean_stddev_tiles_0_1.json --label_map_json building-damage-assessment/constants/class_lists/xBD_label_map.json --model models/model_best.pth.tar
 ```
 Samples of files that contain input images paths are shown in [constants/splits/final_mdl_all_disaster_splits_sliced_img_augmented_20.json](./constants/splits/final_mdl_all_disaster_splits_sliced_img_augmented_20.json) and [constants/splits/all_disaster_splits_sliced_img_augmented_20.json](./constants/splits/all_disaster_splits_sliced_img_augmented_20.json). 
 This input file can contain one or multiple image paths for inference.
