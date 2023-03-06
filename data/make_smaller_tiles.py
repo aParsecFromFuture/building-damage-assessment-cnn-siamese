@@ -15,10 +15,10 @@ import torchvision.transforms.functional as TF
 
 config = {
     'batch_size': 1,
-    'data_dir': './xBD/',
+    'data_dir': './building-damage-assessment/xBD/',
     'sliced_data_dir': './final_mdl_all_disaster_splits/',
-    'disaster_splits_json': './nlrc.building-damage-assessment/constants/splits/final_mdl_all_disaster_splits.json',
-    'disaster_splits_json_sliced': './nlrc.building-damage-assessment/constants/splits/final_mdl_all_disaster_splits_sliced_img_augmented_20.json'
+    'disaster_splits_json': './building-damage-assessment/constants/splits/final_mdl_splits.json',
+    'disaster_splits_json_sliced': './building-damage-assessment/constants/splits/final_mdl_splits_sliced_img_augmented_20.json'
 }
 
 logging.basicConfig(

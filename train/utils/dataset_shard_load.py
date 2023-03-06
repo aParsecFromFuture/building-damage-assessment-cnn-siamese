@@ -83,6 +83,7 @@ class DisasterDataset(Dataset):
         
         if self.normalize is True:
             pre_img_tile_name =   self.pre_img_tile_chip_shard[i]
+            pre_img_tile_name = pre_img_tile_name.split('/')[-2] + '/' + pre_img_tile_name.split('/')[-1]
             post_img_tile_name = pre_img_tile_name.replace('pre', 'post')
     
             # normalize the images based on a tilewise mean & std dev --> pre_

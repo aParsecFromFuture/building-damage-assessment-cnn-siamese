@@ -38,9 +38,9 @@ config = {'labels_dmg': [0, 1, 2, 3, 4],
           'out_dir': './nlrc_outputs/',
           'data_dir_shards': './xBD_sliced_augmented_20_alldisasters_final_mdl_npy/',
           'shard_no': 0,
-          'disaster_splits_json': './nlrc.building-damage-assessment/constants/splits/final_mdl_all_disaster_splits_sliced_img_augmented_20.json',
-          'disaster_mean_stddev': './nlrc.building-damage-assessment/constants/splits/all_disaster_mean_stddev_tiles_0_1.json',
-          'label_map_json': './nlrc.building-damage-assessment/constants/class_lists/xBD_label_map.json',
+          'disaster_splits_json': './building-damage-assessment/constants/splits/final_mdl_splits_sliced_img_augmented_20.json',
+          'disaster_mean_stddev': './building-damage-assessment/constants/splits/mean_stddev_tiles_0_1.json',
+          'label_map_json': './building-damage-assessment/constants/class_lists/xBD_label_map.json',
           'starting_checkpoint_path': './nlrc_outputs/UNet_all_data_dmg/checkpoints/checkpoint_epoch120_2021-06-30-10-28-49.pth.tar'}
 
 logging.basicConfig(stream=sys.stdout,

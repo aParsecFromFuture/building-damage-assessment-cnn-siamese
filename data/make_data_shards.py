@@ -35,9 +35,9 @@ from tqdm import tqdm
 
 config = {'num_shards': 1,
           'out_dir': './xBD_sliced_augmented_20_alldisasters_final_mdl_npy/',
-          'data_dir': './xBD_sliced_augmented_20_alldisasters/',
-          'data_splits_json': './nlrc.building-damage-assessment/constants/splits/final_mdl_all_disaster_splits_sliced_img_augmented_20.json',
-          'data_mean_stddev': './nlrc.building-damage-assessment/constants/splits/all_disaster_mean_stddev_tiles_0_1.json'}
+          'data_dir': './final_mdl_all_disaster_splits/',
+          'data_splits_json': './building-damage-assessment/constants/splits/final_mdl_splits_sliced_img_augmented_20.json',
+          'data_mean_stddev': './building-damage-assessment/constants/splits/mean_stddev_tiles_0_1.json'}
 
 def load_dataset():
     splits = load_json_files(config['data_splits_json'])
